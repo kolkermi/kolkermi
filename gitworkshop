@@ -15,9 +15,3 @@ larv.data <- read.csv("data25_6_reduvar_extra_binned_size_adj.csv",header = T)
 #boxplot(stan.log.data,data=stan.log.data, main="Standardized variables (size adjusted)", 
 #        xlab="Measurement Parameters",boxwex = 0.5) #=plot the data
 #larv.data=cbind(larv.data[,1:4],stan.log.data[,1:length(stan.log.data)])#merge the stan data with the first 4 col of larv data
-
-# 2). Bypass the log transformation, just standartization  ######################################
-data<-larv.data[,5:length(larv.data)]
-stan.data=decostand(data,'standardize',margin=2)#= data transformation
-larv.data=cbind(larv.data[,1:4],stan.data[,1:length(stan.data)])#merge the stan data with the first 4 col of larv data
-
