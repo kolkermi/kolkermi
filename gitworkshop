@@ -4,7 +4,7 @@ setwd('') # = get working directory
 larv.data <- read.csv("data25_6_reduvar_extra_binned_size_adj.csv",header = T)
 
 
-# Data transformation for PCA analysis: choose to run 1 option #################################
+
 
 # 1).log tranformation -> standartization   ####################################################
 #log.data<-log(larv.data[,5:length(larv.data)])#Log transform the data
