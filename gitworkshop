@@ -11,7 +11,15 @@ larv.data <- read.csv("data25_6_reduvar_extra_binned_size_adj.csv",header = T)
 #log.data<-replace(log.data, log.data == "-Inf", 0) #= remove invalid data
 #boxplot(log.data,data=log.data, main="Log Transformed variables (size adjusted)", 
 #        xlab="Measurement Parameters",boxwex = 0.5) #=plot the data
-#stan.log.data=decostand(log.data,'standardize',margin=2)#= data transformation
-#boxplot(stan.log.data,data=stan.log.data, main="Standardized variables (size adjusted)", 
-#        xlab="Measurement Parameters",boxwex = 0.5) #=plot the data
-#larv.data=cbind(larv.data[,1:4],stan.log.data[,1:length(stan.log.data)])#merge the stan data with the first 4 col of larv data
+
+# PCA analysis for larvae data ###################################################################
+# Preform the PCA
+larv.PCA=prcomp(larv.data[,5:length(larv.data)],center = T,scale. = T)
+summary(larv.PCA)
+#=scree plot of the components
+windows()
+scree<-screeplot(larv.PCA, bstick = TRUE, type = c("barplot", "lines"),
+                 npcs = min(6, length(larv.PCA$sdev)),
+                 ptype = "o", bst.col = "red", bst.lty = "solid",
+                 xlab = "Component", ylab = "Inertia")
+#main = deparse(substitute(pc.larv)))
